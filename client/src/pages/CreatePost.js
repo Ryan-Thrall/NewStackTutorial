@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 function CreatePost() {
 
+  let navigate = useNavigate();
+
   const initialValues = {
     title: "",
     post: "",
     username: "",
   };
-
-  let navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required(),

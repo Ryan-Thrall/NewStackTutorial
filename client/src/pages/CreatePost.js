@@ -14,11 +14,10 @@ function CreatePost() {
   const initialValues = {
     title: "",
     post: "",
-    username: "",
   };
 
   useEffect(() => {
-    if (!authState.status) {
+    if (!localStorage.getItem("accessToken")) {
       navigate("/login");
     }
   }, []);
@@ -26,11 +25,11 @@ function CreatePost() {
   const validationSchema = Yup.object().shape({
     title: Yup.string().required(),
     postText: Yup.string().required(),
-    username: Yup.string().min(3).max(15).required(),
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/posts", data).then((response) => {
+
+    axios.post("http://localhost:3001/posts", data, { headers: { accessToken: localStorage.getItem("accessToken") } }).then((response) => {
       navigate("/");
     });
   };
@@ -47,9 +46,6 @@ function CreatePost() {
           <label>Post: </label>
           <ErrorMessage name="postText" component="span" />
           <Field id="inputCreatePost" name="postText" placeholder="(Ex. Post...)" />
-          <label>Username: </label>
-          <ErrorMessage name="username" component="span" />
-          <Field id="inputCreatePost" name="username" placeholder="(Ex. John123...)" />
 
           <button type="submit"> Create Post</button>
         </Form>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiThumbUp } from '@mdi/js';
 import { AuthContext } from '../helpers/AuthContext';
@@ -68,7 +68,7 @@ function Home() {
             <div className="body" onClick={() => { navigate(`/post/${value.id}`) }}> {value.postText} </div>
             <div className="footer">
 
-              <div className="username">{value.username}</div>
+              <div className="username"><Link to={`/profile/${value.UserId}`}>{value.username}</Link></div>
               <div className="buttons">
                 <div onClick={() => { likeAPost(value.id) }}>
                   <Icon path={mdiThumbUp} size={1} className={likedPosts.includes(value.id) ? "unlikeBttn" : "likeBttn"} />

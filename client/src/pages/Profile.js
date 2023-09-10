@@ -13,11 +13,11 @@ function Profile() {
   const { authState } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((response) => {
+    axios.get(`https://newstacktutorial-4355c8849eb1.herokuapp.com/auth/basicinfo/${id}`).then((response) => {
       setUsername(response.data.username);
     })
 
-    axios.get(`http://localhost:3001/posts/byuserId/${id}`).then((response) => {
+    axios.get(`https://newstacktutorial-4355c8849eb1.herokuapp.com/posts/byuserId/${id}`).then((response) => {
       setlistOfPosts(response.data);
     })
 

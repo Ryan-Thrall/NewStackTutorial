@@ -18,7 +18,7 @@ function App() {
   const [authState, setAuthState] = useState({ username: "", id: 0, status: false, });
 
   useEffect(() => {
-    axios.get('http://localhost:3001/auth/auth', {
+    axios.get('https://newstacktutorial-4355c8849eb1.herokuapp.com/auth/auth', {
       headers: {
         accessToken: localStorage.getItem("accessToken"),
       },

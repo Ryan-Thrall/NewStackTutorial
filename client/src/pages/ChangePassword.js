@@ -6,7 +6,7 @@ function ChangePassword() {
   const [newPassword, setNewPassword] = useState('');
 
   const changePassword = () => {
-    axios.put("http://localhost:3001/auth/changepassword", { oldPassword: oldPassword, newPassword: newPassword }, { headers: { accessToken: localStorage.getItem("accessToken"), } }).then((response) => {
+    axios.put("https://newstacktutorial-4355c8849eb1.herokuapp.com/auth/changepassword", { oldPassword: oldPassword, newPassword: newPassword }, { headers: { accessToken: localStorage.getItem("accessToken"), } }).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
       }

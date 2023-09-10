@@ -16,7 +16,7 @@ function Registration() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data).then(() => {
+    axios.post("https://newstacktutorial-4355c8849eb1.herokuapp.com/auth", data).then(() => {
       console.log(data);
     })
   };
